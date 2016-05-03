@@ -3,7 +3,6 @@ package prop.grup3;
 import javafx.util.Pair;
 import org.la4j.Matrix;
 import org.la4j.iterator.VectorIterator;
-import org.la4j.matrix.sparse.CCSMatrix;
 import org.la4j.vector.SparseVector;
 
 import java.io.IOException;

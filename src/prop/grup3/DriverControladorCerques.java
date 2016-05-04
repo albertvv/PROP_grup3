@@ -59,13 +59,13 @@ public class DriverControladorCerques {
                         }
                         System.out.println("La rellevancia entre "+vs.firstElement()+" i "+vs.lastElement()+" pel path "+path+" és  "+qc.CercaRellevancia(path,vs));
                         break;
-                    /*case 2:
+                    case 2:
                         System.out.println("Introdueix path");
                         path = b.next();
                         System.out.println("Introdueix el nom de la primera entitat del path");
                         Integer entitat1= b.nextInt();
                         EscriuSparseVector(qc.CercaRelimportant(path,entitat1));
-                        break;*/
+                        break;
                     case 3:
                         System.out.println("Introdueix la id de l'entitat");
                         System.out.println("Aquí no es comprova si existeix ");

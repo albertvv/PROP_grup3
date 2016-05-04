@@ -165,7 +165,21 @@ public class Grafo {
         }
         return v;
     }
-
+    public Integer getIndiceid (Integer id,String tipus) {
+        switch(tipus) {
+            case "Paper":
+                return idPIndex.get(id);
+            case "Autor":
+                return idAIndex.get(id);
+            case "Conferencia":
+                return idCIndex.get(id);
+            case "Termino":
+                return idTIndex.get(id);
+            default:
+                System.out.println("tipus incorrecte");
+                return null;
+        }
+    }
     public Integer getIndice(String nom) { return nomIndex.get(nom); }
 
     public boolean addEntidad(String nombre, Integer id, String tag, String tipoEntidad) {

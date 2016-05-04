@@ -1,6 +1,6 @@
 package prop.grup3;
 
-import org.la4j.*;
+import org.la4j.Matrix;
 import org.la4j.Vector;
 import org.la4j.iterator.VectorIterator;
 import org.la4j.matrix.sparse.CCSMatrix;
@@ -26,7 +26,7 @@ public class Metrica {
             Vector a = mat.getRow(i);
             double sum = a.sum();
             if (sum != 0) {
-                a = a.multiply(1 / sum);
+                a = a.multiply(1 / Math.sqrt(sum));
                 mat.setRow(i, a);
             }
         }
@@ -39,7 +39,7 @@ public class Metrica {
             Vector a = mat.getColumn(i);
             double sum = a.sum();
             if (sum != 0) {
-                a = a.multiply(1 / sum);
+                a = a.multiply(1 / Math.sqrt(sum));
                 mat.setColumn(i, a);
             }
         }
@@ -157,87 +157,142 @@ public class Metrica {
     //Calcula la matriu de rellevancia,la matriu esquerra i dreta
     private Matrix[] CalcularMatrius(String path, Matrix m[]){
         int pathLength = path.length();
-        Matrix RM;
-        Matrix LM;
-        Matrix relevanceMatrix;
+        final Matrix RM[] = new Matrix[1];
+        final Matrix LM[] = new Matrix[1];
 
         if (pathLength % 2 == 1)
         {
-            LM = ConvertToU(GetMatrixType(m, path.substring(0, 2)));
-            for (int i = 1; i < (pathLength / 2); i++) {
-                LM = LM.multiply(ConvertToU(GetMatrixType(m, path.substring(i, i + 2))));
+            Thread calcLM = new Thread() {
+                @Override
+                public void run() {
+                    LM[0] = ConvertToU(GetMatrixType(m, path.substring(0, 2)));
+                    for (int i = 1; i < (pathLength / 2); i++) {
+                        LM[0] = LM[0].multiply(ConvertToU(GetMatrixType(m, path.substring(i, i + 2))));
+                    }
+
+                }
+            };
+
+            Thread calcRM = new Thread() {
+                @Override
+                public void run() {
+                    RM[0] = ConvertToV(GetMatrixType(m, path.substring(pathLength / 2, (pathLength / 2) + 2)));
+                    for (int i = pathLength / 2 + 1; i < (pathLength - 1); i++) {
+                        RM[0] = RM[0].multiply(ConvertToV(GetMatrixType(m, path.substring(i, i + 2))));
+                    }
+                }
+            };
+            calcLM.start();
+            calcRM.start();
+            try {
+                calcLM.join();
+                calcRM.join();
+            }catch (InterruptedException e){
+                System.err.println("Error, una de les threads a sigut interrompuda.");
+                System.exit(-1);
             }
 
-            RM = ConvertToV(GetMatrixType(m, path.substring(pathLength / 2, (pathLength / 2) + 2)));
-            for (int i = pathLength / 2 + 1; i < (pathLength - 1); i++) {
-                RM = RM.multiply(ConvertToV(GetMatrixType(m, path.substring(i, i + 2))));
-            }
         } else
         {
-            LM = ConvertToU(GetMatrixType(m, path.substring(0, 2)));
-            for (int i = 1; i < (pathLength / 2) - 1; i++) {
-                LM = LM.multiply(ConvertToU(GetMatrixType(m, path.substring(i, i + 2))));
+            Thread calcLM = new Thread() {
+                @Override
+                public void run() {
+                    LM[0] = ConvertToU(GetMatrixType(m, path.substring(0, 2)));
+                    for (int i = 1; i < (pathLength / 2) - 1; i++) {
+                        LM[0] = LM[0].multiply(ConvertToU(GetMatrixType(m, path.substring(i, i + 2))));
+                    }
+                    System.out.println("Acabat LM");
+                }
+            };
+
+            final String type = path.substring(pathLength / 2-1, (pathLength / 2) + 1); // Relacio atomica a descomposar
+            final Matrix matrius[] = new Matrix[2];
+
+            Thread calcDec = new Thread() {
+                @Override
+                public void run() {
+                    Matrix r[]= Decompose(m,type);
+                    matrius[0] = r[0];
+                    matrius[1] = r[1];
+                    System.out.println("Acabat DEC");
+                }
+            };
+
+            Thread calcRM = new Thread() {
+                @Override
+                public void run() {
+                    if(pathLength>2){
+                        RM[0] = ConvertToV(GetMatrixType(m, path.substring(pathLength/2, pathLength/2 + 2)));
+                        for (int i = (pathLength / 2)+1; i < (pathLength - 1); i++) {
+                            RM[0] = RM[0].multiply(ConvertToV(GetMatrixType(m, path.substring(i, i + 2))));
+                        }
+                        System.out.println("Acabat RM");
+                    }
+                }
+            };
+
+            calcLM.start();
+            calcRM.start();
+            calcDec.start();
+            try {
+                calcRM.join();
+                calcDec.join();
+                if(pathLength>2)
+                     RM[0] = matrius[1].multiply(RM[0]);
+                else
+                    RM[0] = matrius[1];
+                calcLM.join();
+            }catch (InterruptedException e){
+                System.err.println("Error, una de les threads a sigut interrompuda.");
+                System.exit(-1);
             }
-
-            String type = path.substring(pathLength / 2-1, (pathLength / 2) + 1); // Relacio atomica a descomposar
-            Matrix matrius[] = Decompose(m,type);
-
             if(pathLength > 2)
-                LM = LM.multiply(ConvertToU(matrius[0]));
+                LM[0] = LM[0].multiply(ConvertToU(matrius[0]));
             else
-                LM = ConvertToU(matrius[0]);
-
-            RM = ConvertToV(matrius[1]);
-            for (int i = pathLength / 2; i < (pathLength - 1); i++) {
-                RM = RM.multiply(ConvertToV(GetMatrixType(m, path.substring(i, i + 2))));
-            }
+                LM[0] = ConvertToU(matrius[0]);
         }
-
-        relevanceMatrix = LM.multiply(RM);
-        return new Matrix[]{LM,RM,relevanceMatrix};
+        return new Matrix[]{LM[0],RM[0]};
     }
 
     ////////
     // Mètodes publics
     ////////
     public double ComputarMetrica(int entidad1, int entidad2, String path, Matrix m[]) {
-        System.out.println("Començo a calcular");
         Matrix matrius[] = CalcularMatrius(path,m);
-        System.out.println("0");
-        double val = matrius[2].get(entidad1, entidad2);
-        System.out.println("1");
+
+        double val = matrius[0].getRow(entidad1).innerProduct(matrius[1].getColumn(entidad2));
         double l1 = CalculateLength((CompressedVector) matrius[0].getRow(entidad1)); //Aixo només funciona si les matrius son de tipus SparseMatrix
-        System.out.println("2");
         double l2 = CalculateLength((CompressedVector) matrius[1].getColumn(entidad2)); //Un cast es la unica manera eficient de obtenir els vectors esparsos de les matrius
-        System.out.println("Acabo");
         if (l1 == 0 || l2 == 0)
             return 0;
         return Round(val / (l1 * l2));
     }
 
+
+
     public CompressedVector ComputarMetrica(int entidad, String path, Matrix m[]) {
         Matrix matrius[] = CalcularMatrius(path,m);
 
-        CompressedVector v = (CompressedVector)matrius[2].getRow(entidad);
-
-        VectorIterator it = v.nonZeroIterator();
+        CompressedVector v = (CompressedVector)matrius[0].getRow(entidad);
+        CompressedVector res = new CompressedVector(matrius[1].columns());
         double l1 = CalculateLength((CompressedVector)matrius[0].getRow(entidad)); //Aixo només funciona si les matrius son de tipus SparseMatrix
-        while(it.hasNext()){
-            it.next();
-            double l2 = CalculateLength((CompressedVector)matrius[1].getColumn(it.index())); //Un cast es la unica manera eficient de obtenir els vectors esparsos de les matrius
+        for(int i = 0; i < matrius[1].columns();i++){
+            double val = v.innerProduct(matrius[1].getColumn(i));
+            double l2 = CalculateLength((CompressedVector)matrius[1].getColumn(i)); //Un cast es la unica manera eficient de obtenir els vectors esparsos de les matrius
             if(l1 != 0 && l2 != 0)
-                v.set(it.index(),Round(it.get()/(l1*l2)));
-            else
-                v.set(it.index(),0);
+                res.set(i,Round(val/(l1*l2)));
         }
-        return v;
+        return res;
     }
 
+    //Super lent, cuidado. Potencialment multiplicareu matrius del ordre 17000x17000.
+    //Esparsa o no aixo triga bastant (de fet si fos densa trigaria casi un dia sencer en una cpu normaleta)
     public Matrix ComputarMetrica(String path,Matrix m[]){
         Matrix matrius[] = CalcularMatrius(path,m);
 
-        for(int j = 0;j < matrius[2].columns();j++) {
-            CompressedVector v = (CompressedVector) matrius[2].getColumn(j);
+        Matrix rel = matrius[0].multiply(matrius[1]);
+        for(int j = 0;j < rel.columns();j++) {
+            CompressedVector v = (CompressedVector) rel.getColumn(j);
 
             VectorIterator it = v.nonZeroIterator();
             double l2 = CalculateLength((CompressedVector) matrius[1].getColumn(j)); //Un cast es la unica manera eficient de obtenir els vectors esparsos de les matrius
@@ -249,8 +304,8 @@ public class Metrica {
                 else
                     v.set(it.index(), 0);
             }
-            matrius[2].setColumn(j,v);
+            rel.setColumn(j,v);
         }
-        return matrius[2];
+        return rel;
     }
 }

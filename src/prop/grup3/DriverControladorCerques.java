@@ -93,12 +93,13 @@ public class DriverControladorCerques {
                         int it = b.nextInt();
                         System.out.println("numgrups seleccionats :"+ngrups);
                         EscriuClustering(qc.Clustering(path,ngrups,vs,it));
-                        break;
+                        break;*/
                     case 6:
                         System.out.println("Introdueix index resultat a filtrar ( sol el 0 i 1 donen output ja que utilitzem ResImportant que és un stub)");
                         int ind = b.nextInt();
                         System.out.println("Introdueix num etiqueta a filtrar, escriu ' no ' si qualsevol, sol donen output etiq0,etiq1,etiq2,etiq3 ja que Entitat és un stub");
-                        String etiq = b.next();
+                        String etiq = b.nextLine();
+                        b.nextLine();
                         System.out.println("Introdueix a continuació la rellevancia minima i el nombre de resultats sino escriu -1");
                         System.out.println("Per defecte la rellevancia minima és 0.01 i es visualitzen tots els resultats");
                         double rel = b.nextDouble();
@@ -107,7 +108,7 @@ public class DriverControladorCerques {
                         System.out.println("(t'ho dona ordenat per id )");
                         EscriuSparseVector(qc.FiltraRelimportant(ind,rel,nres,etiq));
                         break;
-                    case 7:
+                   /* case 7:
                         System.out.println("Introdueix index resultat a filtrar, sol dona output la 0 ja que ResClustering és un stub");
                         int index = b.nextInt();
                         System.out.println("Introdueix num etiqueta a filtrar, sol donen output etiq0,etiq1,etiq2,etiq3 ja que Entitat és un stub"); // no es filtrarà si son temes

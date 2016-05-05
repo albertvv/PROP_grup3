@@ -4,6 +4,7 @@ import javafx.util.Pair;
 import org.la4j.Matrix;
 import org.la4j.iterator.VectorIterator;
 import org.la4j.vector.SparseVector;
+import org.la4j.vector.sparse.CompressedVector;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -30,15 +31,35 @@ public class ControladorCerques {
         System.out.println("fimatrius");
     }
     public Double CercaRellevancia(String path, Vector<Integer> vs){
+        for (int i = 0; i < vs.size() ; i++) {
+           if(!vs.get(i).equals(-1)) vs.set(i,IDtoindex(vs.get(i),Entitatequivalent(path.charAt(i))));
+        }
         QueryRellevancia qr = new QueryRellevancia(path,vs,m,m1);
         return qr.Cerca();
     }
-        public SparseVector CercaRelimportant(String path, Integer entitat1){
+
+    private Integer IDtoindex(Integer id,String tipus) {
+        System.out.println("el index de :"+id+" es :"+cg.getGrafo().getIndiceid(id,tipus));
+        return cg.getGrafo().getIndiceid(id,tipus);
+    }
+    private Integer IndextoID(Integer index,String tipus){
+        System.out.println("la id del index :"+index+" es: "+cg.getGrafo().getidIndice(index,tipus));
+        return cg.getGrafo().getidIndice(index,tipus);
+    }
+
+    public SparseVector CercaRelimportant(String path, Integer entitat1){
+        entitat1 = IDtoindex(entitat1,Entitatequivalent(path.charAt(0)));
         QueryRelimportant qi= new QueryRelimportant(path,entitat1,m,m1);
         SparseVector sv= qi.Cerca();
-        ResImportant r = new ResImportant(qi,sv);
+        SparseVector sv2= new CompressedVector(cg.getGrafo().getLastID()+1);
+        VectorIterator it = sv.nonZeroIterator();
+        while(it.hasNext()) {
+            Double rel = it.next();
+            sv2.set(IndextoID(it.index(),Entitatequivalent(path.charAt(path.length()-1))),rel);
+        }
+        ResImportant r = new ResImportant(qi,sv2);
         lr.addRelImp(r);
-        return sv;
+        return sv2;
     }
     public Vector<String> CercaRelDirecta(Integer id,String tipusentitat){ // s'hauria de canviar per id ja que fixat nom i tipus poden haver-hi repetits
         Vector<Entidad> ve= cg.getGrafo().getRelacion(id,tipusentitat);

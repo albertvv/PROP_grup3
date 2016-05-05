@@ -73,12 +73,12 @@ public class DriverControladorCerques {
                         System.out.println("Introdueix el tipus d'entitat");
                         String tipus = b.next();
                         Escriuvector(qc.CercaRelDirecta(id,tipus)); //canviar rel directa perque funcioni per id
-                        break;/*
+                        break;
                     case 4:
                         System.out.println("Introdueix index dels ultims resultats( tactil de cara al usuari )");
                         EscriuCreuada(qc.CercaCreuada(b.nextInt(),b.nextInt())); // sol pot ser o 0 o 1 l'index de moment
                         break;
-                    case 5:
+                   /* case 5:
                         System.out.println("Introdueix path amb mateix tipus d'entitat a l'inici i al final ( no es comprova )");
                         path = b.next();
                         System.out.println("Introdueix el nombre d'entitats a agrupar i el seu nom (del tipus de la primera entitat del path)");
@@ -128,11 +128,11 @@ public class DriverControladorCerques {
                         System.out.println("Afegeix l'id d'una entitat i el seu tipus ");
                         System.out.println("El nom de l'entitat és : "+qc.getnomEntitat(b.nextInt(),b.next()));
                         break;
-                  /*  case 10:
+                    case 10:
                         System.out.println("Llista últimes relacions importants:");
                         Escriullista(qc.getListImp());
                         break;
-                    case 11:
+                   /* case 11:
                         System.out.println("Llista últims clusterings :");
                         Escriuclusters(qc.getListClust());
                         break; */

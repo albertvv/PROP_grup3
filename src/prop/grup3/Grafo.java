@@ -75,7 +75,6 @@ public class Grafo {
     /*----*/
 
     //METODES PUBLICS
-
     public boolean exists(String nom, Integer id, String tipus) {
         if (id != null) {
             switch (tipus) {
@@ -175,6 +174,21 @@ public class Grafo {
                 return idCIndex.get(id);
             case "Termino":
                 return idTIndex.get(id);
+            default:
+                System.out.println("tipus incorrecte");
+                return null;
+        }
+    }
+    public Integer getidIndice(Integer index,String tipus){
+        switch(tipus) {
+            case "Paper":
+                return vectorPaper.get(index).getId();
+            case "Autor":
+                return vectorAutor.get(index).getId();
+            case "Conferencia":
+                return vectorConferencia.get(index).getId();
+            case "Termino":
+                return vectorTermino.get(index).getId();
             default:
                 System.out.println("tipus incorrecte");
                 return null;

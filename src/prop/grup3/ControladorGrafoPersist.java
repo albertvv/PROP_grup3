@@ -24,7 +24,7 @@ public class ControladorGrafoPersist {
 
     public ControladorGrafoPersist() {
         //Direccions dels fitxers continguts a DBLP
-        String dir = "C:\\Users\\usuario\\Desktop\\DBLP_four_area\\";
+        String dir = "C:\\Users\\albert.val.vila\\Desktop\\DBLP_four_area\\";
         this.paper = dir + "paper.txt";
         this.author = dir + "author.txt";
         this.conf = dir + "conf.txt";

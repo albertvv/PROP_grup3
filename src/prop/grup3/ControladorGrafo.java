@@ -137,7 +137,7 @@ public class ControladorGrafo {
     }
 
     private boolean guardarRelPA() throws IOException {
-      /*  Vector<Autor> vectorAutor = g.getAutors();
+        Vector<Autor> vectorAutor = g.getAutors();
         Vector<Vector<String>> PA = new Vector<Vector<String>>();
         for (int i = 0; i < vectorAutor.size(); ++i) {
             Vector<Entidad> vEnt = g.getRelacion(vectorAutor.get(i).getId(), "Autor");
@@ -148,8 +148,7 @@ public class ControladorGrafo {
                 PA.add(vec);
             }
         }
-        return cgp.savePA(PA);*/
-        return true;
+        return cgp.savePA(PA);
     }
 
     private boolean guardarRelPC() throws IOException {

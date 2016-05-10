@@ -496,8 +496,8 @@ public class Grafo {
         }
     }
 
-    public Entidad getEntidad(String nombre, Integer id, String tipoEntidad) {
-        Integer i = getIndice(nombre);
+    public Entidad getEntidad(Integer id, String tipoEntidad) {
+        Integer i = getIndiceid(id,tipoEntidad);
         if (i != null) {
             switch (tipoEntidad) {
                 case "Paper":

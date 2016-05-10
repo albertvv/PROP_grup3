@@ -98,8 +98,7 @@ public class DriverControladorCerques {
                         System.out.println("Introdueix index resultat a filtrar ( sol el 0 i 1 donen output ja que utilitzem ResImportant que és un stub)");
                         int ind = b.nextInt();
                         System.out.println("Introdueix num etiqueta a filtrar, escriu ' no ' si qualsevol, sol donen output etiq0,etiq1,etiq2,etiq3 ja que Entitat és un stub");
-                        String etiq = b.nextLine();
-                        b.nextLine();
+                        String etiq = b.next();
                         System.out.println("Introdueix a continuació la rellevancia minima i el nombre de resultats sino escriu -1");
                         System.out.println("Per defecte la rellevancia minima és 0.01 i es visualitzen tots els resultats");
                         double rel = b.nextDouble();
@@ -133,10 +132,18 @@ public class DriverControladorCerques {
                         System.out.println("Llista últimes relacions importants:");
                         Escriullista(qc.getListImp());
                         break;
+
                    /* case 11:
                         System.out.println("Llista últims clusterings :");
                         Escriuclusters(qc.getListClust());
                         break; */
+                    case 12:
+                        System.out.println("retorna totes les entitats amb aquell nom i mateix tipus");
+                        b.nextLine();
+                        String nom = b.nextLine();
+                        tipus = b.next();
+                        Escriuids(qc.getIDs(nom,tipus));
+                        break;
                     default:
                         System.out.println("Exit");
                         exit=true;
@@ -144,6 +151,12 @@ public class DriverControladorCerques {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+        }
+    }
+
+    private static void Escriuids(Vector<Integer> iDs) {
+        for (int i = 0; i <iDs.size() ; i++) {
+            System.out.println("Entitat amb id : "+iDs.get(i));
         }
     }
 

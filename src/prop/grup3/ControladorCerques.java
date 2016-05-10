@@ -87,7 +87,11 @@ public class ControladorCerques {
             Double rel = it.next();
             String p = r.getQuery().getPath();
              p=Entitatequivalent(p.charAt(p.length()-1));
-            if(rel< threshold ||  ( !etiq.equals("no") && !getEntitat(getnomEntitat(it.index(),p),it.index(),p).getEtiqueta().equals(etiq))) it.set(0);
+            System.out.println("etiqueta de "+it.index()+" és : "+getEntitat(it.index(),p).getEtiqueta());
+            String etiqitem = getEntitat(it.index(),p).getEtiqueta();
+            if(etiqitem == null||rel< threshold || ( !etiq.equals("no") && !etiqitem.equals(etiq))) {
+                it.set(0);
+            }
             else v.add(new Pair<>(it.index(),rel)); // ens quedem sol si estan o per sobre el threshold o mateix etiqueta
         }
         Collections.sort(v, new Comparator<Pair<Integer, Double>>() { //ordeno aqui per rellevancia per filtrar per rellevancia i nombre de resultats
@@ -110,7 +114,8 @@ public class ControladorCerques {
         for (int i = 0; i < vs.size() ; i++) {
             for (int j = 0; j <vs.get(i).size() ; j++) {
                 String p = Entitatequivalent(r.getQuery().getPath().charAt(0));
-                if(!cg.getGrafo().getEntidad(getnomEntitat(vs.get(i).get(j),p),vs.get(i).get(j),p).getEtiqueta().equals(etiq)){
+                String etiqitem = getEntitat(vs.get(i).get(j),p).getEtiqueta();
+                if(etiqitem==null || !etiqitem.equals(etiq)){
                     vs.get(i).remove(j);
                 }
             }
@@ -143,10 +148,10 @@ public class ControladorCerques {
         return vs;
     }
     public Vector<Integer> getIDs(String nom,String tipus){
-        return null;
+        return cg.getGrafo().getID(nom,tipus);
     }
-    private Entidad getEntitat(String nom,Integer id, String tipus){
-        return cg.getGrafo().getEntidad(nom,id,tipus);
+    private Entidad getEntitat(Integer id, String tipus){
+        return cg.getGrafo().getEntidad(id,tipus);
     }
     private String Entitatequivalent(char c){ // exemple A -> Autor
         switch(c){

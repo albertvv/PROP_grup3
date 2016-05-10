@@ -457,7 +457,7 @@ public class Grafo {
     }
 
     public Vector<Entidad> getRelacion(Integer id, String tipoEntidad) {
-        Vector<Entidad> vR = new Vector<Entidad>();
+        Vector<Entidad> vR = new Vector();
         int i, j, n;
         switch (tipoEntidad) {
             case "Paper":
@@ -482,13 +482,13 @@ public class Grafo {
                 j = idCIndex.get(id);
                 n = vectorPaper.size();
                 for (i = 0; i < n; ++i)
-                    if (!matrizPaperConferencia.isZeroAt(i, j)) vR.addElement(vectorConferencia.elementAt(i));
+                    if (!matrizPaperConferencia.isZeroAt(i, j)) vR.addElement(vectorPaper.elementAt(i));
                 return vR;
             case "Termino":
                 j = idTIndex.get(id);
                 n = vectorPaper.size();
                 for (i = 0; i < n; ++i)
-                    if (!matrizPaperTermino.isZeroAt(i, j)) vR.addElement(vectorTermino.elementAt(i));
+                    if (!matrizPaperTermino.isZeroAt(i, j)) vR.addElement(vectorPaper.elementAt(i));
                 return vR;
             default:
                 System.out.println("tipus incorrecte");

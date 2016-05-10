@@ -3,6 +3,7 @@
     <properties maven-id="org.la4j:la4j:0.6.0" />
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/la4j/la4j/0.6.0/la4j-0.6.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/la4j/la4j/0.6.0/la4j-0.6.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -16,13 +16,16 @@ public class CtrlPresentacio {
     }
 /////////////////Sync vistes
     public void VcerqTOrel(){
+        System.out.println("desactivo vista");
        vcerques.desactivar();
-       if(vrel==null) vrel = new VistaRellevancia();
+        System.out.println("creovistarellevancia");
+       if(vrel==null) vrel = new VistaRellevancia(this);
+        System.out.println("faigvisible");
         vrel.ferVisible();
     }
     public void VrelTOcerq(){
-//        vrel.ferInvisible();
-//        vcerques.setEnabled(true);
+        vrel.ferInvisible();
+        vcerques.ferVisible();
     }
 
 

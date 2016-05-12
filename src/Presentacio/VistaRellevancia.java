@@ -3,6 +3,7 @@ package Presentacio;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 /**
  * Created by albert.val.vila on 10/05/2016.
@@ -34,6 +35,27 @@ public class VistaRellevancia {
                 cp.VrelTOcerq();
             }
         });
+        cercaButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               Cerca();
+            }
+        });
+
+    }
+
+    private void Cerca() {
+        cp.CercaRellevancia(textField1.getText(),readTextArea());
+    }
+
+    private Vector<Integer> readTextArea() {
+        System.out.println(textArea1.getLineCount());
+        String[] s = textArea1.getText().split("\\n");
+        Vector<Integer> v = new Vector<>();
+        for (int i = 0; i <s.length ; i++) {
+            v.add(Integer.parseInt(s[i]));
+            System.out.println(s[i]);
+        }
+        return v;
     }
 
     public void ferInvisible() {

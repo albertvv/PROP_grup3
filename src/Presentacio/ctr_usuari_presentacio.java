@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package user_presentacio;
+package Presentacio;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import user_dominio.ctr_usuari_dom;
+import prop.grup3.ctr_usuari_dom;
 /**
  *
  * @author bernat

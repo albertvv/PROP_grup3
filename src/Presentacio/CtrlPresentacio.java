@@ -8,18 +8,24 @@ public class CtrlPresentacio {
     private VistaRellevancia vrel = null;
 //////////////////Constructor i metodes ini
     public CtrlPresentacio(){
-        if(vcerques==null)vcerques = new VistaCerques();
+        if(vcerques==null) vcerques = new VistaCerques(this);
+
     }
-    public void inicialitzarPresentacio() {
+    public void init() {
         vcerques.ferVisible();
     }
 /////////////////Sync vistes
     public void VcerqTOrel(){
-        vcerques.setEnabled(false);
-        if(vrel==null) vrel = new VistaRellevancia();
+       vcerques.desactivar();
+       if(vrel==null) vrel = new VistaRellevancia();
+        vrel.ferVisible();
     }
     public void VrelTOcerq(){
-        vrel.ferInvisible();
-        vcerques.setEnabled(true);
+//        vrel.ferInvisible();
+//        vcerques.setEnabled(true);
     }
+
+
+    //////////AccesControladorDomini
+
 }

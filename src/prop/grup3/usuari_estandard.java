@@ -1,4 +1,4 @@
-package user_dominio;
+package prop.grup3;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -49,5 +49,5 @@ public class usuari_estandard extends Usuario_generico {
     public void borrar_usuari(ConjuntoUsuarios cjt){
         cjt.deleteUsuario(getUsername());
     }
-    public Vector<Entidad> relacions_directes(String nom, String tipus, Grafo graf){return graf.getRelacion(nom, tipus);}
+    public Vector<Entidad> relacions_directes(Integer id, String tipus, Grafo graf){return graf.getRelacion(id, tipus);}
 }

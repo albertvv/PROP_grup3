@@ -1,4 +1,4 @@
-package user_dominio;
+package prop.grup3;
 
 import java.util.Date;
 import java.util.Map;
@@ -26,9 +26,9 @@ public class usuari_privilegiat extends usuari_estandard {
         cjt.addUsuario(up);
     }
     public Map<String, usuari_estandard> informacio_usuaris(ConjuntoUsuarios cjt){return cjt.getConjunto();}
-    public void afegir_element(String nom, String tipus, String etiq, Grafo graf){graf.addEntidad(nom,tipus,etiq);}
-    public void afegir_relacio_graf(String primer, String segon, String tipus, Grafo graf){graf.addRelacion(primer,segon,tipus);}
-    public void esborrar_element(String nom, String tipus, Grafo graf){graf.deleteEntidad(nom, tipus);}
-    public void esborrar_relacio_graf(String primer, String segon, String tipus, Grafo graf){graf.deleteRelacion(primer, segon, tipus);}
+    public void afegir_element(String nom, Integer id, String etiq, String tipus, Grafo graf){graf.addEntidad(nom,id,etiq, tipus);}
+    public void afegir_relacio_graf(Integer primer, Integer segon, String tipus, Grafo graf){graf.addRelacion(primer,segon,tipus);}
+    public void esborrar_element(String nom, Integer id, String tipus, Grafo graf){graf.deleteEntidad(nom, id, tipus);}
+    public void esborrar_relacio_graf(Integer primer, Integer segon, String tipus, Grafo graf){graf.deleteRelacion(primer, segon, tipus);}
 }
 

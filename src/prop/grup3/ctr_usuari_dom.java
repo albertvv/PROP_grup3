@@ -52,8 +52,8 @@ public class ctr_usuari_dom {
         Date date = transformar_data.stringToDate(data);
         return (aux((usuari_privilegiat) user)).modificar_usuari(username, pass, nom, sexe, date, cjt);
     }
-    public ArrayList<ArrayList<String>> relacions_directes(String nom, String tipus) {
-        Vector<Entidad> vector = user.relacions_directes(nom, tipus, graf);
+    public ArrayList<ArrayList<String>> relacions_directes(Integer id, String tipus) {
+        Vector<Entidad> vector = user.relacions_directes(id, tipus, graf);
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
         Iterator it = vector.iterator();
         Entidad eaux;
@@ -135,19 +135,19 @@ public class ctr_usuari_dom {
         return user.getRelacion(nom).getPath();
     }
 
-    public void afegir_element(String nom, String tipus, String etiq) {
-        (aux((usuari_privilegiat) user)).afegir_element(nom, tipus, etiq, graf);
+    public void afegir_element(String nom,Integer id, String etiq, String tipus) {
+        (aux((usuari_privilegiat) user)).afegir_element(nom, id, etiq, tipus, graf);
     }
 
-    public void afegir_relacio_graf(String primer, String segon, String tipus) {
+    public void afegir_relacio_graf(Integer primer, Integer segon, String tipus) {
         (aux((usuari_privilegiat) user)).afegir_relacio_graf(primer, segon, tipus, graf);
     }
 
-    public void esborrar_element(String nom, String tipus) {
-        (aux((usuari_privilegiat) user)).esborrar_element(nom, tipus, graf);
+    public void esborrar_element(String nom, Integer id, String tipus) {
+        (aux((usuari_privilegiat) user)).esborrar_element(nom, id, tipus, graf);
     }
 
-    public void esborrar_relacio_graf(String primer, String segon, String tipus) {
+    public void esborrar_relacio_graf(Integer primer, Integer segon, String tipus) {
         (aux((usuari_privilegiat) user)).esborrar_relacio_graf(primer, segon, tipus, graf);
     }
 

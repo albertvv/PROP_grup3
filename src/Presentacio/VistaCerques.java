@@ -38,6 +38,7 @@ public class VistaCerques  {
                 ("isEventDispatchThread: " + SwingUtilities.isEventDispatchThread());
         frameVista.pack();
         frameVista.setVisible(true);
+        frameVista.setEnabled(true);
     }
     public void actionPerformed_buttonObrirRel (ActionEvent event) {
         System.out.println("Antes de crear la vista secundaria");

@@ -9,7 +9,7 @@ import java.util.Vector;
  * Created by albert.val.vila on 10/05/2016.
  */
 public class VistaRellevancia {
-    JFrame frameRel = new JFrame("vrel");
+    private JFrame frameRel = new JFrame("vrel");
     private CtrlPresentacio cp;
     private JPanel panel1;
     private JButton enrereButton;
@@ -37,15 +37,14 @@ public class VistaRellevancia {
         });
         cercaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               Cerca();
+               cp.VrelTOVres(cp.CercaRellevancia(textField1.getText(),readTextArea()));
             }
         });
 
     }
 
-    private void Cerca() {
-        cp.CercaRellevancia(textField1.getText(),readTextArea());
-    }
+
+
 
     private Vector<Integer> readTextArea() {
         System.out.println(textArea1.getLineCount());

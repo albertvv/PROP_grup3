@@ -11,6 +11,7 @@ import java.util.Vector;
 public class CtrlPresentacio {
     private VistaCerques vcerques = null;
     private VistaRellevancia vrel = null;
+    private VistaResRellevancia vrelres = null;
     private ControladorCerques cc;
 //////////////////Constructor i metodes ini
     public CtrlPresentacio(){
@@ -38,7 +39,12 @@ public class CtrlPresentacio {
         vrel.ferInvisible();
         vcerques.ferVisible();
     }
-
+    public void VrelTOVres(Double r){
+        vrel.ferInvisible();
+        if(vrelres==null) vrelres = new VistaResRellevancia(this,r);
+        System.out.println("faigvisible");
+        vrelres.ferVisible();
+    }
 
     //////////AccesControladorDomini
     public Vector<Integer> CheckEntitat(String nom,String tipus) {

@@ -1,9 +1,8 @@
-package user_dominio;
+package prop.grup3;
 
 import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.*;
-import user_persistencia.*;
 
 public class ctr_usuari_dom {
     private Scanner sc = new Scanner(System.in);
@@ -132,8 +131,8 @@ public class ctr_usuari_dom {
         return result;
     }
 
-    public TipoRelacion consultar_relacio(String nom) {
-        return user.getRelacion(nom);
+    public String consultar_relacio(String nom) {
+        return user.getRelacion(nom).getPath();
     }
 
     public void afegir_element(String nom, String tipus, String etiq) {

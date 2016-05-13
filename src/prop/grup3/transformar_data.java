@@ -1,4 +1,4 @@
-package user_dominio;
+package prop.grup3;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

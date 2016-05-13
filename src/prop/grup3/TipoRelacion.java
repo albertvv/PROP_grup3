@@ -1,4 +1,4 @@
-package user_dominio;
+package prop.grup3;
 
 public class TipoRelacion {
 	

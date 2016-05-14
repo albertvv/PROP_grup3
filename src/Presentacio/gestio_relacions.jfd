@@ -1,0 +1,177 @@
+JFDML JFormDesigner: "5.2.3.0.281" Java: "1.8.0_77" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l:::p {comp info::l:::x, comp borrar::l:::x, comp modificar::l:::x, comp crear::l:::x, comp introduir:::::x, comp resposta:::::x}, space :::p, par t {comp jScrollPane1:::p:375:p, seq {comp back:::p::p, space :::p, comp sortir:::p::p}}, space ::59:x}}"
+			"$verticalGroup": "par l {seq l {space :::p, par b {comp crear::b:p::p, comp sortir::b:p::p, comp back::b:p::p}, space :::p, par l {seq {comp modificar:::p::p, space :::p, comp borrar:::p::p, space :::p, comp info:::p::p, space u:::p, comp introduir:::p::p, space :::p, comp resposta:::p::p, space :0:61:x}, comp jScrollPane1::::0:x}, space :::p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "crear"
+				"text": "Crear relacio"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "crearActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "modificar"
+				"text": "Modificar relacio"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "modificarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "borrar"
+				"text": "Esborrar relacio"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "borrarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "info"
+				"text": "Informacio relacions"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "infoActionPerformed", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "jScrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "taula"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "Nom" )
+						add( "Path" )
+						add( "Descripcio" )
+					}, new java.util.Vector {
+						add( class java.lang.String )
+						add( class java.lang.String )
+						add( class java.lang.String )
+					}, new java.util.Vector {
+						add( true )
+						add( true )
+						add( true )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+					} )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "introduir"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "resposta"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "sortir"
+				"text": "Sortir"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortirActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "back"
+				"text": "Gestio usuari"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "backActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 600, 300 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

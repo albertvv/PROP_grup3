@@ -1,0 +1,53 @@
+JFDML JFormDesigner: "5.2.3.0.281" Java: "1.8.0_77" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:47:p, par l {seq {comp resultat:::p::p, space :0:0:x}, seq {par l {comp jLabel2::l:p::p, comp jLabel1::l:p::p, comp privilegiat:::p::p}, space :::p, par l {seq {comp boto:::p::p, space ::134:x}, seq {par l {comp username:::::x, comp password:::::x}, space :p:53:p}}}}}, seq t {space :::x, comp back:::p::p, space :::p, comp sortir:::p::p}}"
+			"$verticalGroup": "par l {seq l {par b {comp sortir::b:p::p, comp back::b:p::p}, space :p:55:p, par b {comp username::b:p::p, comp jLabel1::b:p::p}, space s:::p, par t {comp password:::p::p, comp jLabel2:::p::p}, space s:::p, par b {comp boto::b:p::p, comp privilegiat::b:p::p}, space :::p, comp resultat:::p::p, space ::117:x}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel1"
+				"text": "Introdueix el nom"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel2"
+				"text": "Introdueix la contrasenya"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "password"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "username"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "usernameActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "boto"
+				"text": "Crear usuari"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "botoActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "privilegiat"
+				"text": "privilegiat"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "resultat"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "sortir"
+				"text": "Sortir"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortirActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "back"
+				"text": "Gestio privilegiat"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "backActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

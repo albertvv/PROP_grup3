@@ -1,0 +1,70 @@
+JFDML JFormDesigner: "5.2.3.0.281" Java: "1.8.0_77" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {comp resposta::t:::x, seq {space :::p, par l {seq {par l {comp jLabel1::::180:x, comp jLabel2:::::x, comp jLabel3:::::x, comp jLabel4:::::x, comp jLabel5:::::x}, space :::p, par l {par l {par l {par l {comp boto:::p::p, comp newPass::t:p:200:p}, comp name::t:p:200:p}, comp sex::t:p:200:p, comp date:::p:200:p}, comp oldPass::l:p:200:p}}, seq t {space :0:0:x, comp back:::p::p, space :::p, comp sortir:::p::p}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {par b {comp sortir::b:p::p, comp back::b:p::p}, space :p:15:p, par b {comp oldPass::b:p::p, comp jLabel1::b:p::p}, space :::p, par b {comp jLabel2::b:p::p, comp newPass::b:p::p}, space :::p, par b {comp name::b:p::p, comp jLabel3::b:p::p}, space :::p, par b {comp jLabel4::b:p::p, comp sex::b:p::p}, space :::p, par l {comp jLabel5:::p::p, comp date:::p::p}, space :p:13:p, comp boto:::p::p, space :::p, comp resposta:::p:60:p, space ::49:x}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "oldPass"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "oldPassActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "newPass"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "name"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "sex"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "date"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "boto"
+				"text": "Cambiar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "botoActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel1"
+				"text": "Contrasenya antiga"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel2"
+				"text": "Contrasenya nova"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel3"
+				"text": "Nom nou"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel4"
+				"text": "Sexe nou"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel5"
+				"text": "Data nova"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "resposta"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "sortir"
+				"text": "Sortir"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortirActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "back"
+				"text": "Gestio usuari"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "backActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

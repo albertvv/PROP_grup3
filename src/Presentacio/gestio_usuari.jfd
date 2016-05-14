@@ -1,0 +1,41 @@
+JFDML JFormDesigner: "5.2.3.0.281" Java: "1.8.0_77" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:131:p, par l:::p {comp modificar:::::x, comp borrar::l:::x, comp privilegiat::l:::x, comp relacions:::::x}, space ::148:x}, seq t {space :0:0:x, comp sortir:::p::p}}"
+			"$verticalGroup": "par l {seq l {comp sortir:::p::p, space :p:27:p, comp relacions:::p::p, space u:::p, comp modificar:::p::p, space :::p, comp borrar:::p::p, space :::p, comp privilegiat:::p::p, space ::135:x}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "modificar"
+				"text": "modificar l'usuari"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "modificarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "borrar"
+				"text": "esborrar l'usuari"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "borrarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "privilegiat"
+				"text": "gestió privilegiat"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "privilegiatActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "relacions"
+				"text": "gestio de relacions"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "relacionsActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "sortir"
+				"text": "Sortir"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortirActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

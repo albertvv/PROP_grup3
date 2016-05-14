@@ -1,0 +1,37 @@
+JFDML JFormDesigner: "5.2.3.0.281" Java: "1.8.0_77" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :p:145:p, par l:::p {comp resposta:::::x, comp guardar::l:::x, comp importar::l:::x, comp log::l:::x}, space u:::p, comp error:::p::p, space ::138:x}}"
+			"$verticalGroup": "par l {seq l {space :p:80:p, comp log:::p::p, space s:::p, par b {comp importar::b:p::p, comp error::b:p::p}, space s:::p, comp guardar:::p::p, space :p:113:p, comp resposta:::p::p, space ::28:x}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "log"
+				"text": "Loggin"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "logActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "importar"
+				"text": "Importar dades"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "importarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "guardar"
+				"text": "Guardar dades"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "guardarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "error"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "resposta"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

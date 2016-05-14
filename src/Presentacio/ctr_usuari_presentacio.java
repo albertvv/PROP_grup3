@@ -23,18 +23,10 @@ public class ctr_usuari_presentacio {
     private modificar_relacio modificar_relacio;
     private modificar_usuari_estandard modificar_usuari_estandard;
     private modificar_usuari_privilegiat modificar_usuari_privilegiat;
+    private relacions_directes relacions_directes;
+    private principal principal;
     ctr_usuari_presentacio(){
         ctr_dom = new ctr_usuari_dom();
-        crear_relacio = new crear_relacio(this);
-        crear_usuari = new crear_usuari(this);
-        gestio_privilegiat = new gestio_privilegiat(this);
-        gestio_relacions = new gestio_relacions(this);
-        gestio_usuari = new gestio_usuari(this);
-        inici = new inici(this);
-        loggin = new loggin(this);
-        modificar_relacio = new modificar_relacio(this);
-        modificar_usuari_estandard = new modificar_usuari_estandard(this);
-        modificar_usuari_privilegiat = new modificar_usuari_privilegiat(this);
     }
     boolean loggin(String nom, String pass){
         return ctr_dom.loggin(nom, pass);
@@ -75,16 +67,16 @@ public class ctr_usuari_presentacio {
     ArrayList<ArrayList<String>> informacio_usuaris(){
         return ctr_dom.informacio_usuaris();
     }
-    void afegir_element(String nom, String tipus, String etiq){
-        ctr_dom.afegir_element(nom, tipus, etiq);
+    void afegir_element(String nom, Integer id, String etiq, String tipus){
+        ctr_dom.afegir_element(nom, id, etiq, tipus);
     }
-    void afegir_relacio_graf(String primer, String segon, String tipus){
+    void afegir_relacio_graf(Integer primer, Integer segon, String tipus){
         ctr_dom.afegir_relacio_graf(primer, segon, tipus);
     }
-    void esborrar_element(String nom, String tipus){
-        ctr_dom.esborrar_element(nom, tipus);
+    void esborrar_element(String nom, Integer id, String tipus){
+        ctr_dom.esborrar_element(nom, id, tipus);
     }
-    void esborrar_relacio_graf(String primer, String segon, String tipus){
+    void esborrar_relacio_graf(Integer primer, Integer segon, String tipus){
         ctr_dom.esborrar_relacio_graf(primer, segon, tipus);
     }
     void carregar_usuaris() throws FileNotFoundException,NullPointerException{
@@ -97,33 +89,65 @@ public class ctr_usuari_presentacio {
         return ctr_dom.usuari_actual();
     }
     void crear_relacio(){
-        crear_relacio.vista(this);
+        crear_relacio = new crear_relacio(this);
+        crear_relacio.vista();
     }
     void crear_usuari(){
-        crear_usuari.vista(this);
+        crear_usuari = new crear_usuari(this);
+        crear_usuari.vista();
     }
     void gestio_privilegiat(){
-        gestio_privilegiat.vista(this);
+        gestio_privilegiat = new gestio_privilegiat(this);
+        gestio_privilegiat.vista();
     }
     void gestio_relacions(){
-        gestio_relacions.vista(this);
+        gestio_relacions = new gestio_relacions(this);
+        gestio_relacions.vista();
     }
     void gestio_usuari(){
-        gestio_usuari.vista(this);
+        gestio_usuari = new gestio_usuari(this);
+        gestio_usuari.vista();
     }
     void inici(){
-        inici.vista(this);
+        inici = new inici(this);
+        inici.vista();
     }
     void loggin(){
-        loggin.vista(this);
+        loggin = new loggin(this);
+        loggin.vista();
     }
     void modificar_relacio(){
-        modificar_relacio.vista(this);
+        modificar_relacio = new modificar_relacio(this);
+        modificar_relacio.vista();
     }
     void modificar_usuari_estandard(){
-        modificar_usuari_estandard.vista(this);
+        modificar_usuari_estandard = new modificar_usuari_estandard(this);
+        modificar_usuari_estandard.vista();
     }
     void modificar_usuari_privilegiat(){
-        modificar_usuari_privilegiat.vista(this);
+        modificar_usuari_privilegiat = new modificar_usuari_privilegiat(this);
+        modificar_usuari_privilegiat.vista();
     }
+    void relacions_directes(){
+        relacions_directes = new relacions_directes(this);
+        relacions_directes.vista();
+    }
+    void carregar_ctr_dom(ctr_usuari_dom ctr){
+        ctr_dom = ctr;
+    }
+    boolean privilegiat(){return ctr_dom.privilegiat();}
+    void principal(){
+        principal = new principal(this);
+        principal.vista();}
 }
+
+
+
+
+
+
+
+
+
+
+

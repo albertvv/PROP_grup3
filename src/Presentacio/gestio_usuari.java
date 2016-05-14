@@ -5,6 +5,11 @@
  */
 package Presentacio;
 
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle;
+
 /**
  *
  * @author bernat
@@ -17,6 +22,7 @@ public class gestio_usuari extends javax.swing.JFrame {
     public gestio_usuari(ctr_usuari_presentacio ctr) {
         initComponents();
         ctr_pres = ctr;
+        if(!ctr_pres.privilegiat()) privilegiat.setVisible(false);
     }
 
     /**
@@ -26,83 +32,70 @@ public class gestio_usuari extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // Generated using JFormDesigner Evaluation license - Bernat Diaz
     private void initComponents() {
+        modificar = new JButton();
+        borrar = new JButton();
+        privilegiat = new JButton();
+        relacions = new JButton();
+        sortir = new JButton();
 
-        modificar = new javax.swing.JButton();
-        borrar = new javax.swing.JButton();
-        privilegiat = new javax.swing.JButton();
-        relacions = new javax.swing.JButton();
-        sortir = new javax.swing.JButton();
+        //======== this ========
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        Container contentPane = getContentPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        //---- modificar ----
         modificar.setText("modificar l'usuari");
-        modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarActionPerformed(evt);
-            }
-        });
+        modificar.addActionListener(e -> modificarActionPerformed(e));
 
+        //---- borrar ----
         borrar.setText("esborrar l'usuari");
-        borrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                borrarActionPerformed(evt);
-            }
-        });
+        borrar.addActionListener(e -> borrarActionPerformed(e));
 
-        privilegiat.setText("gestió privilegiat");
-        privilegiat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                privilegiatActionPerformed(evt);
-            }
-        });
+        //---- privilegiat ----
+        privilegiat.setText("gesti\u00f3 privilegiat");
+        privilegiat.addActionListener(e -> privilegiatActionPerformed(e));
 
+        //---- relacions ----
         relacions.setText("gestio de relacions");
-        relacions.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                relacionsActionPerformed(evt);
-            }
-        });
+        relacions.addActionListener(e -> relacionsActionPerformed(e));
 
+        //---- sortir ----
         sortir.setText("Sortir");
-        sortir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortirActionPerformed(evt);
-            }
-        });
+        sortir.addActionListener(e -> sortirActionPerformed(e));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(privilegiat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(relacions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(148, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(sortir))
+        GroupLayout contentPaneLayout = new GroupLayout(contentPane);
+        contentPane.setLayout(contentPaneLayout);
+        contentPaneLayout.setHorizontalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addGap(131, 131, 131)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                        .addComponent(modificar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(borrar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(privilegiat, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(relacions, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(148, Short.MAX_VALUE))
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(sortir))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(sortir)
-                .addGap(27, 27, 27)
-                .addComponent(relacions)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(modificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(borrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(privilegiat)
-                .addContainerGap(135, Short.MAX_VALUE))
+        contentPaneLayout.setVerticalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addComponent(sortir)
+                    .addGap(27, 27, 27)
+                    .addComponent(relacions)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(modificar)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(borrar)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(privilegiat)
+                    .addContainerGap(135, Short.MAX_VALUE))
         );
-
         pack();
+        setLocationRelativeTo(getOwner());
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
@@ -134,7 +127,7 @@ public class gestio_usuari extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void vista(ctr_usuari_presentacio ctr) {
+    public void vista() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -161,16 +154,17 @@ public class gestio_usuari extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new gestio_usuari(ctr).setVisible(true);
+                new gestio_usuari(ctr_pres).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton borrar;
-    private javax.swing.JButton modificar;
-    private javax.swing.JButton privilegiat;
-    private javax.swing.JButton relacions;
-    private javax.swing.JButton sortir;
+    // Generated using JFormDesigner Evaluation license - Bernat Diaz
+    private JButton modificar;
+    private JButton borrar;
+    private JButton privilegiat;
+    private JButton relacions;
+    private JButton sortir;
     // End of variables declaration//GEN-END:variables
 }

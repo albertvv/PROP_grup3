@@ -1,0 +1,50 @@
+JFDML JFormDesigner: "5.2.3.0.281" Java: "1.8.0_77" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {comp jLabel3:::p::p, space s:::p, par l {seq {comp boto:::p::p, space :0:186:x}, comp descripcio:::::x}}, seq {par l {comp jLabel1::l:p::p, comp jLabel2::l:p::p}, space s:::p, par l:::p {comp nom_antic:::::x, comp nom_nou::::151:x}, space :0:0:x}, comp resposta:::::x}, space :::p}, seq t {space :0:0:x, comp back:::p::p}}"
+			"$verticalGroup": "par l {seq l {comp back:::p::p, space :p:51:p, par b {comp jLabel1::b:p::p, comp nom_antic::b:p::p}, space u:::p, par b {comp jLabel2::b:p::p, comp nom_nou::b:p::p}, space u:::p, par b {comp jLabel3::b:p::p, comp descripcio::b:p::p}, space s:::p, comp boto:::p::p, space u:::p, comp resposta:::p::p, space ::92:x}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel1"
+				"text": "Introdueix el nom antic"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel2"
+				"text": "Introdueix el nom nou"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel3"
+				"text": "Introdueix la descripcio"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "nom_antic"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "nom_nou"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "descripcio"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "boto"
+				"text": "Modificar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "botoActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "resposta"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "back"
+				"text": "Gestio relacions"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "backActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

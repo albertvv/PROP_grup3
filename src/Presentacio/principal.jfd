@@ -1,0 +1,36 @@
+JFDML JFormDesigner: "5.2.3.0.281" Java: "1.8.0_77" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space :::x, comp sortir:::p::p, space :::p}, seq l {space :p:148:p, par l:::p {comp usuari:::::x, comp graf::l:::x, comp cerques::l:::x}, space ::157:x}}"
+			"$verticalGroup": "par l {seq l {comp sortir:::p::p, space :p:56:p, comp usuari:::p::p, space :::p, comp graf:::p::p, space :::p, comp cerques:::p::p, space :0:140:x}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "sortir"
+				"text": "Sortir"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortirActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "usuari"
+				"text": "Gestio usuari"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "usuariActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "graf"
+				"text": "Gestio graf"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "grafActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "cerques"
+				"text": "Cerques"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cerquesActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

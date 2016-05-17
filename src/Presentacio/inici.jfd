@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p:145:p, par l:::p {comp resposta:::::x, comp guardar::l:::x, comp importar::l:::x, comp log::l:::x}, space u:::p, comp error:::p::p, space ::138:x}}"
-			"$verticalGroup": "par l {seq l {space :p:80:p, comp log:::p::p, space s:::p, par b {comp importar::b:p::p, comp error::b:p::p}, space s:::p, comp guardar:::p::p, space :p:113:p, comp resposta:::p::p, space ::28:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:145:p, par l:::p {comp GuardarDades:::::x, comp ImportarDades:::::x, comp resposta:::::x, comp guardarUsuaris::t:::x, comp importarUsuaris::l:::x, comp log::t:::x}, space u:::p, comp error:::p::p, space ::111:x}}"
+			"$verticalGroup": "par l {seq l {par l {seq {space :p:130:p, comp error:::p::p}, seq l {space :p:45:p, comp log:::p::p, space :::p, comp importarUsuaris:::p::p, space :::p, comp guardarUsuaris:::p::p}}, space :::p, comp ImportarDades:::p::p, space :::p, comp GuardarDades:::p::p, space :p:88:p, comp resposta:::p::p, space :::x}}"
 		} ) {
 			name: "this"
 			"defaultCloseOperation": 3
@@ -15,14 +15,16 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "logActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "importar"
-				"text": "Importar dades"
+				name: "importarUsuaris"
+				"text": "Importar usuaris"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "importarActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "importarUsuarisActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "guardar"
-				"text": "Guardar dades"
+				name: "guardarUsuaris"
+				"text": "Guardar usuaris"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "guardarActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "guardarUsuarisActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "error"
@@ -30,8 +32,19 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "resposta"
 			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "ImportarDades"
+				"text": "Importar dades"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ImportarDadesActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "GuardarDades"
+				"text": "Guardar dades"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "GuardarDadesActionPerformed", true ) )
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"size": new java.awt.Dimension( 400, 300 )
+			"location": new java.awt.Point( 0, 0 )
 		} )
 	}
 }

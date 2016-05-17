@@ -6,7 +6,9 @@
 package Presentacio;
 
 import java.awt.*;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle;
@@ -21,6 +23,29 @@ public class inici extends javax.swing.JFrame {
      * Creates new form inici
      */
     private ctr_usuari_presentacio ctr_pres;
+    private void ImportarDadesActionPerformed(ActionEvent e) {
+        if(ctr_pres.cargar_graf()) error.setText("Dades carregades");
+        else error.setText("No es troben els fitxers de dades");
+    }
+
+    private void importarActionPerformed(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void guardarActionPerformed(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void GuardarDadesActionPerformed(ActionEvent e) {
+        try {
+            if (ctr_pres.guardar_graf()) error.setText("Dades guardades");
+            else error.setText("No hi ha dades");
+        }
+        catch(IOException e2) {
+            error.setText("No es troben els fitxers de dades");
+        }
+    }
+
     public inici(ctr_usuari_presentacio ctr) {
         initComponents();
         ctr_pres = ctr;
@@ -36,10 +61,12 @@ public class inici extends javax.swing.JFrame {
     // Generated using JFormDesigner Evaluation license - Bernat Diaz
     private void initComponents() {
         log = new JButton();
-        importar = new JButton();
-        guardar = new JButton();
+        importarUsuaris = new JButton();
+        guardarUsuaris = new JButton();
         error = new JLabel();
         resposta = new JLabel();
+        ImportarDades = new JButton();
+        GuardarDades = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -49,13 +76,27 @@ public class inici extends javax.swing.JFrame {
         log.setText("Loggin");
         log.addActionListener(e -> logActionPerformed(e));
 
-        //---- importar ----
-        importar.setText("Importar dades");
-        importar.addActionListener(e -> importarActionPerformed(e));
+        //---- importarUsuaris ----
+        importarUsuaris.setText("Importar usuaris");
+        importarUsuaris.addActionListener(e -> {
+			importarActionPerformed(e);
+			importarUsuarisActionPerformed(e);
+		});
 
-        //---- guardar ----
-        guardar.setText("Guardar dades");
-        guardar.addActionListener(e -> guardarActionPerformed(e));
+        //---- guardarUsuaris ----
+        guardarUsuaris.setText("Guardar usuaris");
+        guardarUsuaris.addActionListener(e -> {
+			guardarActionPerformed(e);
+			guardarUsuarisActionPerformed(e);
+		});
+
+        //---- ImportarDades ----
+        ImportarDades.setText("Importar dades");
+        ImportarDades.addActionListener(e -> ImportarDadesActionPerformed(e));
+
+        //---- GuardarDades ----
+        GuardarDades.setText("Guardar dades");
+        GuardarDades.addActionListener(e -> GuardarDadesActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -64,28 +105,37 @@ public class inici extends javax.swing.JFrame {
                 .addGroup(contentPaneLayout.createSequentialGroup()
                     .addGap(145, 145, 145)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                        .addComponent(GuardarDades, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ImportarDades, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(resposta, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(guardar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(importar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(log, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(guardarUsuaris, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(importarUsuaris, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(log, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(error)
-                    .addContainerGap(138, Short.MAX_VALUE))
+                    .addContainerGap(111, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(80, 80, 80)
-                    .addComponent(log)
-                    .addGap(18, 18, 18)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(importar)
-                        .addComponent(error))
-                    .addGap(18, 18, 18)
-                    .addComponent(guardar)
-                    .addGap(113, 113, 113)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(130, 130, 130)
+                            .addComponent(error))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(45, 45, 45)
+                            .addComponent(log)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(importarUsuaris)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(guardarUsuaris)))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(ImportarDades)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(GuardarDades)
+                    .addGap(88, 88, 88)
                     .addComponent(resposta)
-                    .addContainerGap(28, Short.MAX_VALUE))
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -96,9 +146,10 @@ public class inici extends javax.swing.JFrame {
         ctr_pres.loggin();
     }//GEN-LAST:event_logActionPerformed
 
-    private void importarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importarActionPerformed
+    private void importarUsuarisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importarActionPerformed
         try{
             ctr_pres.carregar_usuaris();
+            error.setText("Usuaris carregats");
         }
         catch(IndexOutOfBoundsException e){
             error.setText("Fitxer corrumput");
@@ -108,9 +159,10 @@ public class inici extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_importarActionPerformed
 
-    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+    private void guardarUsuarisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         try{
             ctr_pres.guardar_usuaris();
+            error.setText("Usuaris guardats");
         }
         catch(FileNotFoundException|NullPointerException e){
             error.setText("No es troba el fitxer");
@@ -155,9 +207,11 @@ public class inici extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Bernat Diaz
     private JButton log;
-    private JButton importar;
-    private JButton guardar;
+    private JButton importarUsuaris;
+    private JButton guardarUsuaris;
     private JLabel error;
     private JLabel resposta;
+    private JButton ImportarDades;
+    private JButton GuardarDades;
     // End of variables declaration//GEN-END:variables
 }
